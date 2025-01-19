@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-01-19T02:56:10.022Z"
+    "x-generation-date": "2025-01-19T09:33:40.586Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -5257,6 +5257,9 @@
                   "example": "string or id"
                 }
               },
+              "phone_number": {
+                "type": "string"
+              },
               "locale": {
                 "type": "string"
               },
@@ -5400,6 +5403,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "is_shown": {
+                            "type": "boolean"
                           },
                           "createdAt": {
                             "type": "string",
@@ -5706,6 +5712,9 @@
                           }
                         }
                       }
+                    },
+                    "phone_number": {
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "string",
@@ -6085,6 +6094,9 @@
                 }
               }
             }
+          },
+          "phone_number": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -8233,6 +8245,9 @@
                         }
                       }
                     },
+                    "is_shown": {
+                      "type": "boolean"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -8286,6 +8301,9 @@
                     }
                   }
                 }
+              },
+              "phone_number": {
+                "type": "string"
               },
               "createdAt": {
                 "type": "string",
@@ -8461,6 +8479,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_shown": {
+                "type": "boolean"
               },
               "locale": {
                 "type": "string"
@@ -9169,6 +9190,9 @@
                         }
                       }
                     },
+                    "is_shown": {
+                      "type": "boolean"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -9223,6 +9247,9 @@
                   }
                 }
               },
+              "phone_number": {
+                "type": "string"
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -9275,6 +9302,9 @@
                 }
               }
             }
+          },
+          "is_shown": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",

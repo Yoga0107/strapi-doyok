@@ -26,6 +26,9 @@
       "relation": "manyToOne",
       "target": "api::customer.customer",
       "inversedBy": "reviews"
+    },
+    "is_shown": {
+      "type": "boolean"
     }
   }
 }

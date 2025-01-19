@@ -61,3 +61,9 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
 
 FOR VERCEL-DEPLOY
+
+rsync -avz --exclude='node_modules' -e "ssh -i /Users/macbook/Downloads/strapi-doyok-key.pem" "/Volumes/Macintosh HD - Data/SKRIPSI/omahmbahkung-backend" ec2-user@52.65.58.91:/home/ec2-user/
+
+
+
+sudo scp -i /Users/macbook/Downloads/strapi-doyok-key.pem -r "/Volumes/Macintosh HD - Data/SKRIPSI/omahmbahkung-backend" ec2-user@52.65.58.91:/home/ec2-user/
