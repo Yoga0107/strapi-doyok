@@ -26,10 +26,10 @@ export default ({ env }) => {
       connection: {
         connectionString: env('DATABASE_URL'),
         host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
+        port: env.int('DATABASE_PORT', 5437),
+        database: env('DATABASE_NAME', 'omk-db'),
+        user: env('DATABASE_USERNAME', 'yoga-dev'),
+        password: env('DATABASE_PASSWORD', 'qweqwe'),
         ssl: env.bool('DATABASE_SSL', false) && {
           key: env('DATABASE_SSL_KEY', undefined),
           cert: env('DATABASE_SSL_CERT', undefined),
@@ -38,7 +38,7 @@ export default ({ env }) => {
           cipher: env('DATABASE_SSL_CIPHER', undefined),
           rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
         },
-        schema: env('DATABASE_SCHEMA', 'public'),
+        schema: env('DATABASE_SCHEMA', 'strapi'),
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },

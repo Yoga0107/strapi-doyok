@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "food_products",
+  "info": {
+    "singularName": "food-product",
+    "pluralName": "food-products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "price": {
+      "type": "biginteger",
+      "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "food_products"
+    }
+  }
+}
