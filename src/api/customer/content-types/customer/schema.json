@@ -4,7 +4,8 @@
   "info": {
     "singularName": "customer",
     "pluralName": "customers",
-    "displayName": "customer"
+    "displayName": "customer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,6 +29,9 @@
       "relation": "oneToMany",
       "target": "api::review.review",
       "mappedBy": "customer"
+    },
+    "phone_number": {
+      "type": "string"
     }
   }
 }
