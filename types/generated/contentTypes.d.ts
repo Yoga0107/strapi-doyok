@@ -395,6 +395,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'api::category.category'
     > &
       Schema.Attribute.Private;
+    materials: Schema.Attribute.Relation<'oneToMany', 'api::material.material'>;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
@@ -426,11 +427,13 @@ export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
       'api::customer.customer'
     > &
       Schema.Attribute.Private;
+    loyalti_point: Schema.Attribute.Integer;
     name: Schema.Attribute.String;
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     phone_number: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
+    sales: Schema.Attribute.Relation<'oneToMany', 'api::sale.sale'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -494,6 +497,79 @@ export interface ApiFoodProductFoodProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     price: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    product_media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    sale: Schema.Attribute.Relation<'manyToOne', 'api::sale.sale'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMaterialMaterial extends Struct.CollectionTypeSchema {
+  collectionName: 'materials';
+  info: {
+    description: '';
+    displayName: 'material';
+    pluralName: 'materials';
+    singularName: 'material';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::material.material'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    sales_point: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::sales-point.sales-point'
+    >;
+    stock: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMenuDoyokMenuDoyok extends Struct.SingleTypeSchema {
+  collectionName: 'menu_doyoks';
+  info: {
+    displayName: 'menu-doyok';
+    pluralName: 'menu-doyoks';
+    singularName: 'menu-doyok';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::menu-doyok.menu-doyok'
+    > &
+      Schema.Attribute.Private;
+    menu: Schema.Attribute.String;
+    menu_photo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    price: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -565,6 +641,70 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Integer;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSaleSale extends Struct.CollectionTypeSchema {
+  collectionName: 'sales';
+  info: {
+    displayName: 'sale';
+    pluralName: 'sales';
+    singularName: 'sale';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customer: Schema.Attribute.Relation<'manyToOne', 'api::customer.customer'>;
+    customer_name: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::sale.sale'> &
+      Schema.Attribute.Private;
+    orders: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::food-product.food-product'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    sales_point: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::sales-point.sales-point'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSalesPointSalesPoint extends Struct.CollectionTypeSchema {
+  collectionName: 'sales_points';
+  info: {
+    displayName: 'sales-point';
+    pluralName: 'sales-points';
+    singularName: 'sales-point';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sales-point.sales-point'
+    > &
+      Schema.Attribute.Private;
+    materials: Schema.Attribute.Relation<'oneToMany', 'api::material.material'>;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    sales: Schema.Attribute.Relation<'oneToMany', 'api::sale.sale'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1084,8 +1224,12 @@ declare module '@strapi/strapi' {
       'api::customer.customer': ApiCustomerCustomer;
       'api::equpment.equpment': ApiEqupmentEqupment;
       'api::food-product.food-product': ApiFoodProductFoodProduct;
+      'api::material.material': ApiMaterialMaterial;
+      'api::menu-doyok.menu-doyok': ApiMenuDoyokMenuDoyok;
       'api::order.order': ApiOrderOrder;
       'api::review.review': ApiReviewReview;
+      'api::sale.sale': ApiSaleSale;
+      'api::sales-point.sales-point': ApiSalesPointSalesPoint;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

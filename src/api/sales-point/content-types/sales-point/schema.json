@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sales_points",
+  "info": {
+    "singularName": "sales-point",
+    "pluralName": "sales-points",
+    "displayName": "sales-point"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::material.material",
+      "mappedBy": "sales_point"
+    },
+    "sales": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sale.sale",
+      "mappedBy": "sales_point"
+    }
+  }
+}

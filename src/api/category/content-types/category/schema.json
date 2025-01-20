@@ -30,6 +30,12 @@
       "relation": "oneToMany",
       "target": "api::equpment.equpment",
       "mappedBy": "category"
+    },
+    "materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::material.material",
+      "mappedBy": "category"
     }
   }
 }

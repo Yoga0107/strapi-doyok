@@ -28,6 +28,22 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "food_products"
+    },
+    "sale": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sale.sale",
+      "inversedBy": "orders"
+    },
+    "product_media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

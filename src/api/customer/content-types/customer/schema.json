@@ -32,6 +32,15 @@
     },
     "phone_number": {
       "type": "string"
+    },
+    "sales": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sale.sale",
+      "mappedBy": "customer"
+    },
+    "loyalti_point": {
+      "type": "integer",
     }
   }
 }
